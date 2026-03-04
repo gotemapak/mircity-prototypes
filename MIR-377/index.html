@@ -136,7 +136,6 @@ body {
   color: #3a3a4a;
   line-height: 1.4;
 }
-.hero-bullet-text strong { font-weight: 700; color: #1a1a1a; }
 
 /* Person illustration in hero */
 .hero-person {
@@ -148,25 +147,34 @@ body {
 }
 .hero-person svg { width: 100%; height: 100%; }
 
-/* ─── Info block ─── */
+/* ─── Inline mini-FAQ under CTA ─── */
 .info-block {
-  margin: 0 16px 12px;
+  margin: 0 16px 10px;
   background: #fff;
   border-radius: 14px;
   padding: 12px 14px;
-  display: flex;
-  gap: 10px;
-  align-items: flex-start;
 }
-.info-icon {
-  width: 28px; height: 28px; border-radius: 50%;
-  background: #EAF3FF;
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
-  margin-top: 1px;
+.info-title {
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #1a1a1a;
 }
-.info-icon svg { width: 14px; height: 14px; fill: #4A8FE8; }
-.info-text { font-size: 13px; color: #444; line-height: 1.5; }
+.info-item {
+  font-size: 12px;
+  color: #444;
+  line-height: 1.5;
+  margin-bottom: 6px;
+}
+.info-item:last-child { margin-bottom: 0; }
+.info-q {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 1px;
+}
+.info-a {
+  display: block;
+}
 
 /* ─── CTA button ─── */
 .cta-wrap { margin: 0 16px 12px; }
@@ -618,16 +626,16 @@ body {
         <div class="hero-title">Делегируйте задачу личному помощнику</div>
         <div class="hero-bullets">
           <div class="hero-bullet">
-            <div class="hero-bullet-icon">⏱</div>
-            <div class="hero-bullet-text">Цена за 30 минут работы помощника</div>
+            <div class="hero-bullet-icon">🕒</div>
+            <div class="hero-bullet-text">Поможем снять рутину и освободить время для важных дел.</div>
           </div>
           <div class="hero-bullet">
-            <div class="hero-bullet-icon">➕</div>
-            <div class="hero-bullet-text">Не успеем — добавим ещё 30 мин по той же ставке</div>
+            <div class="hero-bullet-icon">🤝</div>
+            <div class="hero-bullet-text">Купим товары, заберём заказ, встретим гостей, поднимем тяжёлые грузы.</div>
           </div>
           <div class="hero-bullet">
             <div class="hero-bullet-icon">✦</div>
-            <div class="hero-bullet-text">Работаем круглосуточно 24/7</div>
+            <div class="hero-bullet-text">Работаем круглосуточно 24/7.</div>
           </div>
         </div>
       </div>
@@ -642,16 +650,6 @@ body {
       </div>
     </div>
 
-    <!-- Info block -->
-    <div class="info-block">
-      <div class="info-icon">
-        <svg viewBox="0 0 14 14"><circle cx="7" cy="7" r="6.5" stroke="#4A8FE8" stroke-width="1" fill="none"/><rect x="6.25" y="6" width="1.5" height="5" rx=".75" fill="#4A8FE8"/><circle cx="7" cy="4" r=".8" fill="#4A8FE8"/></svg>
-      </div>
-      <div class="info-text">
-        Для покупок через «Личный помощник» предусмотрена 100%&nbsp;предоплата. Перед выполнением мы согласуем с вами все детали и условия.
-      </div>
-    </div>
-
     <!-- CTA button -->
     <div class="cta-wrap">
       <button class="cta-btn" id="ctaBtn" onclick="openModal()">
@@ -659,6 +657,23 @@ body {
         <div class="cta-divider"></div>
         <span class="cta-price">759 ₽</span>
       </button>
+    </div>
+
+    <!-- Mini FAQ under CTA -->
+    <div class="info-block">
+      <div class="info-title">Коротко о сервисе</div>
+      <div class="info-item">
+        <span class="info-q">Что можно поручить?</span>
+        <span class="info-a">Купить товары, забрать или доставить заказ, встретить гостей, помочь с бытовыми задачами в Москва-Сити.</span>
+      </div>
+      <div class="info-item">
+        <span class="info-q">Как считается время?</span>
+        <span class="info-a">Минимальный слот — 30 минут. Если задача не умещается, автоматически добавляем ещё 30 минут по той же ставке.</span>
+      </div>
+      <div class="info-item">
+        <span class="info-q">Как оплачивается услуга?</span>
+        <span class="info-a">Для заказов через «Личный помощник» предусмотрена 100% предоплата после согласования деталей.</span>
+      </div>
     </div>
 
     <!-- More info row -->
