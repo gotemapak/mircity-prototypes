@@ -7,9 +7,12 @@
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
 
+html, body {
+  height: 100%;
+}
+
 body {
   background: #000; /* убираем «поле» вокруг телефона на мобильных */
-  height: 100vh;
   width: 100vw;
   overflow: hidden; /* чтобы не было внешнего скролла страницы */
   display: flex;
@@ -20,7 +23,7 @@ body {
 
 /* ─── Phone shell ─── */
 .phone {
-  width: min(390px, 100vw);
+  width: min(390px, 100%);
   background: #f2f2f7;
   border-radius: 52px;
   overflow: hidden;
@@ -29,9 +32,19 @@ body {
     0 0 0 1px rgba(255,255,255,0.08),
     inset 0 0 0 1px rgba(0,0,0,0.3);
   position: relative;
-  height: min(844px, 100vh);
+  height: min(844px, 100%);
   display: flex;
   flex-direction: column;
+}
+
+/* На маленьких экранах (мобильный браузер / Telegram webview)
+   растягиваем «телефон» на весь вьюпорт, чтобы не было лишнего скролла/полей */
+@media (max-width: 430px) {
+  .phone {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+  }
 }
 
 /* ─── Status bar ─── */
