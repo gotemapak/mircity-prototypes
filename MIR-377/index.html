@@ -469,7 +469,6 @@ body {
 }
 
 /* Options */
-.options-divider { height: 1px; background: #f2f2f7; margin: 4px 0 14px; }
 .options-title { font-size: 13px; font-weight: 700; color: #1a1a1a; margin-bottom: 8px; }
 .option-row {
   display: flex; align-items: center; gap: 12px;
@@ -808,14 +807,12 @@ body {
           </div>
         </div>
 
-        <div class="options-divider"></div>
-
         <!-- Options / checkboxes -->
         <div class="options-title">Дополнительно</div>
-        <div class="option-row" onclick="toggleOption(this, 450)">
+        <div class="option-row" onclick="toggleOption(this, 0)">
           <div class="checkbox" id="cb1"></div>
           <div class="option-text">Взять тележку для тяжёлых грузов</div>
-          <div class="option-price">+450 ₽</div>
+          <div class="option-price"></div>
         </div>
         <div class="option-row" onclick="toggleOption(this, 759)">
           <div class="checkbox" id="cb2"></div>
