@@ -567,43 +567,6 @@ body {
 .faq-modal-q { font-size: 14px; font-weight: 600; color: #1a1a1a; margin-bottom: 4px; }
 .faq-modal-a { font-size: 13px; color: #666; line-height: 1.55; }
 
-/* ─── iOS Keyboard mockup ─── */
-.ios-keyboard {
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  background: #d1d5db;
-  z-index: 300;
-  transform: translateY(100%);
-  transition: transform 0.25s cubic-bezier(0.32, 0.72, 0, 1);
-  flex-shrink: 0;
-  padding: 8px 4px 6px;
-}
-.ios-keyboard.visible { transform: translateY(0); }
-.kb-rows { display: flex; flex-direction: column; gap: 7px; }
-.kb-row { display: flex; gap: 5px; justify-content: center; }
-.kb-key {
-  background: #fff;
-  border-radius: 5px;
-  height: 42px;
-  display: flex; align-items: center; justify-content: center;
-  flex: 1;
-  box-shadow: 0 1px 0 1px rgba(0,0,0,0.25);
-  color: #000;
-  font-size: 17px;
-  font-family: inherit;
-  cursor: pointer;
-  user-select: none;
-}
-.kb-key.dark { background: #adb5bd; font-size: 13px; font-weight: 500; flex: 1.4; }
-.kb-key.space { flex: 4.5; font-size: 15px; color: #000; }
-.kb-key.action { background: #1a1a1a; color: #fff; font-size: 13px; font-weight: 600; flex: 1.4; }
-.kb-key.num { font-size: 13px; }
-
-/* Shift modal up when keyboard visible */
-.modal-sheet.keyboard-open .modal-body {
-  padding-bottom: 260px;
-}
-
 /* ─── Keyframe animations ─── */
 @keyframes blink { 0%,100%{opacity:1}50%{opacity:0} }
 </style>
@@ -818,7 +781,6 @@ body {
           placeholder="Напишите, что нужно сделать: купить кофе, забрать заказ…"
           maxlength="512"
           oninput="onCommentInput(this)"
-          onfocus="onCommentFocus()"
         ></textarea>
 
         <!-- Suggested tags -->
@@ -906,38 +868,6 @@ body {
   <!-- ══════════════════════════
        iOS KEYBOARD MOCKUP
   ══════════════════════════ -->
-  <div class="ios-keyboard" id="iosKeyboard" onmousedown="event.preventDefault()">
-    <div class="kb-rows">
-      <div class="kb-row">
-        <div class="kb-key">й</div><div class="kb-key">ц</div><div class="kb-key">у</div>
-        <div class="kb-key">к</div><div class="kb-key">е</div><div class="kb-key">н</div>
-        <div class="kb-key">г</div><div class="kb-key">ш</div><div class="kb-key">щ</div>
-        <div class="kb-key">з</div><div class="kb-key">х</div>
-      </div>
-      <div class="kb-row">
-        <div style="flex:.5"></div>
-        <div class="kb-key">ф</div><div class="kb-key">ы</div><div class="kb-key">в</div>
-        <div class="kb-key">а</div><div class="kb-key">п</div><div class="kb-key">р</div>
-        <div class="kb-key">о</div><div class="kb-key">л</div><div class="kb-key">д</div>
-        <div class="kb-key">ж</div>
-        <div style="flex:.5"></div>
-      </div>
-      <div class="kb-row">
-        <div class="kb-key dark" onclick="appendKey('⇧')">⇧</div>
-        <div class="kb-key">я</div><div class="kb-key">ч</div><div class="kb-key">с</div>
-        <div class="kb-key">м</div><div class="kb-key">и</div><div class="kb-key">т</div>
-        <div class="kb-key">ь</div><div class="kb-key">б</div><div class="kb-key">ю</div>
-        <div class="kb-key dark" onclick="deleteKey()">⌫</div>
-      </div>
-      <div class="kb-row">
-        <div class="kb-key dark num" onclick="toggleNumpad()">123</div>
-        <div class="kb-key dark" style="flex:.7;font-size:16px;">🌐</div>
-        <div class="kb-key space" onclick="appendKey(' ')">пробел</div>
-        <div class="kb-key action" onclick="closeKeyboard()">Готово</div>
-      </div>
-    </div>
-  </div>
-
 </div><!-- /phone -->
 
 <script>
@@ -947,44 +877,6 @@ let qty = 1;
 let extras = 0;
 let activeTags = new Set();
 let cartCount = 0;
-let keyboardOpen = false;
-
-// ─── Keyboard ───
-function showKeyboard() {
-  if (keyboardOpen) return;
-  keyboardOpen = true;
-  document.getElementById('iosKeyboard').classList.add('visible');
-  document.getElementById('modalSheet').classList.add('keyboard-open');
-  // Scroll textarea into view after animation
-  setTimeout(() => {
-    const field = document.getElementById('commentField');
-    field.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-  }, 260);
-}
-function closeKeyboard() {
-  if (!keyboardOpen) return;
-  keyboardOpen = false;
-  document.getElementById('iosKeyboard').classList.remove('visible');
-  document.getElementById('modalSheet').classList.remove('keyboard-open');
-  document.getElementById('commentField').blur();
-}
-function appendKey(char) {
-  const field = document.getElementById('commentField');
-  const pos = field.selectionStart ?? field.value.length;
-  field.value = field.value.slice(0, pos) + char + field.value.slice(pos);
-  field.selectionStart = field.selectionEnd = pos + char.length;
-  onCommentInput(field);
-}
-function deleteKey() {
-  const field = document.getElementById('commentField');
-  const pos = field.selectionStart ?? field.value.length;
-  if (pos > 0) {
-    field.value = field.value.slice(0, pos - 1) + field.value.slice(pos);
-    field.selectionStart = field.selectionEnd = pos - 1;
-    onCommentInput(field);
-  }
-}
-function toggleNumpad() {} // placeholder
 
 // ─── Modal ───
 function openModal() {
@@ -992,7 +884,6 @@ function openModal() {
   document.getElementById('modalSheet').classList.add('open');
 }
 function closeModal() {
-  closeKeyboard();
   document.getElementById('modalSheet').classList.remove('open');
   setTimeout(() => document.getElementById('modalOverlay').classList.remove('open'), 300);
 }
@@ -1021,9 +912,6 @@ function onCommentInput(el) {
   cc.className = 'char-count' + (len > 460 ? ' warn' : '');
   updateAddBtn();
 }
-function onCommentFocus() {
-  showKeyboard();
-}
 
 // ─── Tags ───
 function toggleTag(el, label) {
@@ -1031,7 +919,6 @@ function toggleTag(el, label) {
   if (el.classList.contains('active')) {
     el.classList.remove('active');
     activeTags.delete(label);
-    // Keyboard stays open if field still has focus
   } else {
     el.classList.add('active');
     activeTags.add(label);
@@ -1042,10 +929,8 @@ function toggleTag(el, label) {
       field.value = newText;
       onCommentInput(field);
     }
-    // Focus triggers real keyboard on mobile + mockup on desktop
     field.focus();
     field.selectionStart = field.selectionEnd = field.value.length;
-    showKeyboard();
   }
   updateAddBtn();
 }
@@ -1087,7 +972,7 @@ function handleModalBodyClick(e) {
   const field = document.getElementById('commentField');
   const tagsEl = document.getElementById('tagsContainer');
   if (!field.contains(e.target) && !tagsEl.contains(e.target)) {
-    closeKeyboard();
+    field.blur();
   }
 }
 
