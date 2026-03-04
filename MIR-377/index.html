@@ -829,7 +829,7 @@ body {
           <span class="qty-val" id="qtyVal">1</span>
           <button class="qty-btn" onclick="changeQty(1)">+</button>
         </div>
-        <button class="add-btn disabled" id="addBtn" onclick="addToCart()">
+        <button class="add-btn" id="addBtn" onclick="addToCart()">
           Добавить <span class="price" id="addBtnPrice">759 ₽</span>
         </button>
       </div>
@@ -868,7 +868,7 @@ body {
           <div class="faq-modal-a">Предусмотрена 100% предоплата. Перед выполнением мы согласуем с вами все детали и условия.</div>
         </div>
         <div class="faq-modal-item">
-          <div class="faq-modal-q">Можно ли взять тележку?</div>
+          <div class="faq-modal-q">Можно ли взять тележку для тяжёлых грузов?</div>
           <div class="faq-modal-a">Да. При оформлении заказа выберите опцию «Взять тележку для тяжёлых грузов» — это +450 ₽ к стоимости.</div>
         </div>
       </div>
@@ -971,10 +971,8 @@ function updatePrice() {
 }
 
 function updateAddBtn() {
-  const field = document.getElementById('commentField');
-  const hasComment = field.value.trim().length > 0;
   const btn = document.getElementById('addBtn');
-  btn.className = 'add-btn' + (hasComment ? '' : ' disabled');
+  btn.className = 'add-btn'; // добавление всегда доступно, даже без комментария
 }
 
 // ─── Close keyboard on tap outside field/tags ───
