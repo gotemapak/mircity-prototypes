@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MIR-491 — Шильдики допродаж</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
+    body {
+      min-height: 100vh;
+      background: #f2f2f7;
+      font-family: -apple-system, "SF Pro Text", BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 24px 12px 40px;
+      color: #111827;
+    }
+    h1 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 4px;
+      text-align: center;
+    }
+    .subtitle {
+      font-size: 13px;
+      color: #6b7280;
+      margin-bottom: 20px;
+      text-align: center;
+      max-width: 460px;
+    }
+    .grid {
+      width: 100%;
+      max-width: 980px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+    @media (max-width: 900px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .col {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .col-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #4b5563;
+    }
+    .phone {
+      border-radius: 24px;
+      background: #ffffff;
+      padding: 14px 14px 18px;
+      box-shadow: 0 18px 40px rgba(15,23,42,0.25);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      position: relative;
+      overflow: hidden;
+    }
+    .status-header {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      margin-bottom: 4px;
+    }
+    .status-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: #111827;
+    }
+    .status-sub {
+      font-size: 12px;
+      color: #9ca3af;
+    }
+    .badge {
+      border-radius: 16px;
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      color: #ffffff;
+      position: relative;
+      overflow: hidden;
+    }
+    .badge::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: 0.8;
+      pointer-events: none;
+    }
+    .badge-content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      max-width: 65%;
+    }
+    .badge-tag {
+      font-size: 11px;
+      font-weight: 500;
+      opacity: 0.9;
+    }
+    .badge-title {
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+    .badge-desc {
+      font-size: 11px;
+      line-height: 1.4;
+      opacity: 0.9;
+    }
+    .badge-cta {
+      position: relative;
+      z-index: 1;
+      flex-shrink: 0;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: none;
+      font-size: 13px;
+      font-weight: 600;
+      color: #111827;
+      background: rgba(255,255,255,0.96);
+      cursor: default;
+      box-shadow: 0 4px 12px rgba(15,23,42,0.24);
+      white-space: nowrap;
+    }
+    .badge-note {
+      font-size: 11px;
+      color: #9ca3af;
+      margin-top: 2px;
+    }
+
+    /* Цветовые темы шильдиков */
+    .badge--restaurant {
+      background: linear-gradient(135deg, #f8a150 0%, #e46a39 100%);
+    }
+    .badge--restaurant::before {
+      background: radial-gradient(circle at 100% 0, rgba(255,255,255,0.32), transparent 60%);
+    }
+
+    .badge--grocery {
+      background: linear-gradient(135deg, #1f7a3b 0%, #0e4d28 100%);
+    }
+    .badge--grocery::before {
+      background: radial-gradient(circle at 0 0, rgba(255,255,255,0.26), transparent 55%);
+    }
+
+    .badge--assistant {
+      background: linear-gradient(135deg, #17274f 0%, #08152e 100%);
+    }
+    .badge--assistant::before {
+      background: radial-gradient(circle at 100% 100%, rgba(255,255,255,0.24), transparent 60%);
+    }
+  </style>
+</head>
+<body>
+  <h1>MIR-491 · Шильдики допродаж</h1>
+  <p class="subtitle">
+    Прототип трёх шильдиков для допродаж на экране статуса заказа: ресторанный, продуктовый и для услуги «Выполним поручение».
+    Стили и содержание приближены к макетам из задачи.
+  </p>
+
+  <div class="grid">
+    <!-- Ресторанный шильдик -->
+    <section class="col">
+      <div class="col-title">Ресторанный шильдик</div>
+      <div class="phone">
+        <div class="status-header">
+          <div class="status-title">Заказ у курьера</div>
+          <div class="status-sub">Доставим к 16:40–16:50</div>
+        </div>
+        <div class="badge badge--restaurant">
+          <div class="badge-content">
+            <div class="badge-tag">Рестораны поблизости</div>
+            <div class="badge-title">Закажите любимые блюда?</div>
+            <div class="badge-desc">Поможем подобрать ресторан и блюда, пока ждёте курьера.</div>
+          </div>
+          <button class="badge-cta">Заказать</button>
+        </div>
+        <div class="badge-note">Свернутый баннер на экране статуса заказа.</div>
+      </div>
+    </section>
+
+    <!-- Продуктовый шильдик -->
+    <section class="col">
+      <div class="col-title">Продуктовый шильдик</div>
+      <div class="phone">
+        <div class="status-header">
+          <div class="status-title">Заказ у курьера</div>
+          <div class="status-sub">Доставим к 16:40–16:50</div>
+        </div>
+        <div class="badge badge--grocery">
+          <div class="badge-content">
+            <div class="badge-tag">Продукты и магазины</div>
+            <div class="badge-title">Заканчиваются продукты?</div>
+            <div class="badge-desc">Подберём товары из ближайших магазинов и доставим к вам.</div>
+          </div>
+          <button class="badge-cta">Заказать</button>
+        </div>
+        <div class="badge-note">Свернутый баннер с допродажей продуктовых товаров.</div>
+      </div>
+    </section>
+
+    <!-- Шильдик «Выполним поручение» -->
+    <section class="col">
+      <div class="col-title">Шильдик «Выполним поручение»</div>
+      <div class="phone">
+        <div class="status-header">
+          <div class="status-title">Заказ у курьера</div>
+          <div class="status-sub">Доставим к 16:40–16:50</div>
+        </div>
+        <div class="badge badge--assistant">
+          <div class="badge-content">
+            <div class="badge-tag">Личный помощник</div>
+            <div class="badge-title">Выполнить ваше поручение?</div>
+            <div class="badge-desc">Личный помощник возьмёт рутину на себя, пока вы ждёте заказ.</div>
+          </div>
+          <button class="badge-cta">Заказать</button>
+        </div>
+        <div class="badge-note">Свернутый баннер для услуги поручений.</div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
+
