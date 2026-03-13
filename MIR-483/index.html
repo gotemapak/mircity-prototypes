@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MIR-483 — макеты закрытого ресторана</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
+    body {
+      min-height: 100vh;
+      background: #f2f2f7;
+      font-family: -apple-system, "SF Pro Text", BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 24px 12px 40px;
+      color: #111827;
+    }
+    h1 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .subtitle {
+      font-size: 13px;
+      color: #6b7280;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .cards {
+      width: 100%;
+      max-width: 420px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .label {
+      font-size: 13px;
+      font-weight: 600;
+      color: #4b5563;
+      margin: 4px 4px 4px 8px;
+    }
+    .card {
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      background-image: url('https://images.pexels.com/photos/2983101/pexels-photo-2983101.jpeg?auto=compress&cs=tinysrgb&w=1200');
+      background-size: cover;
+      background-position: center;
+      height: 190px;
+      box-shadow: 0 14px 30px rgba(0,0,0,0.25);
+      isolation: isolate;
+    }
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.55), rgba(0,0,0,0.65));
+      opacity: 0.92; /* сильное затемнение */
+      z-index: 0;
+    }
+    .favourite {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.18);
+    }
+    .favourite svg {
+      width: 15px;
+      height: 15px;
+      stroke: #9ca3af;
+      fill: none;
+    }
+    .pill {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.98);
+      color: #111827;
+      font-size: 14px;
+      font-weight: 600;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      white-space: nowrap;
+      max-width: calc(100% - 40px);
+    }
+    .pill span {
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .badge-bottom-right {
+      position: absolute;
+      right: 12px;
+      bottom: 12px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.92);
+      font-size: 12px;
+      font-weight: 500;
+      color: #111827;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+      display: none; /* включить, если захотим дублировать время */
+    }
+    .footer-note {
+      margin-top: 20px;
+      font-size: 11px;
+      color: #9ca3af;
+      text-align: center;
+      max-width: 420px;
+    }
+    @media (max-width: 375px) {
+      body { padding-inline: 8px; }
+      .card { height: 170px; }
+      .pill { font-size: 13px; padding: 8px 14px; }
+    }
+  </style>
+</head>
+<body>
+  <h1>MIR-483 · Закрытый ресторан</h1>
+  <div class="subtitle">Три состояния карточки ресторана в мобильной выдаче MirCity</div>
+
+  <div class="cards">
+    <div>
+      <div class="label">1. Ресторан закрыт (без времени)</div>
+      <div class="card">
+        <div class="favourite">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 21s-5.6-3.3-8.2-6C1.4 12.4 2 8.5 4.6 6.6 6.5 5.2 9 5.5 10.7 7.2L12 8.5l1.3-1.3c1.7-1.7 4.2-2 6.1-.6 2.6 1.9 3.2 5.8.8 8.4-2.6 2.7-8.2 6-8.2 6z" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="pill"><span>Ресторан временно закрыт</span></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="label">2. Откроется сегодня в 15:00</div>
+      <div class="card">
+        <div class="favourite">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 21s-5.6-3.3-8.2-6C1.4 12.4 2 8.5 4.6 6.6 6.5 5.2 9 5.5 10.7 7.2L12 8.5l1.3-1.3c1.7-1.7 4.2-2 6.1-.6 2.6 1.9 3.2 5.8.8 8.4-2.6 2.7-8.2 6-8.2 6z" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="pill"><span>Откроется сегодня в 15:00</span></div>
+        <div class="badge-bottom-right">Сегодня в 15:00</div>
+      </div>
+    </div>
+
+    <div>
+      <div class="label">3. Откроется с датой/завтра</div>
+      <div class="card">
+        <div class="favourite">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 21s-5.6-3.3-8.2-6C1.4 12.4 2 8.5 4.6 6.6 6.5 5.2 9 5.5 10.7 7.2L12 8.5l1.3-1.3c1.7-1.7 4.2-2 6.1-.6 2.6 1.9 3.2 5.8.8 8.4-2.6 2.7-8.2 6-8.2 6z" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="pill"><span>Откроется завтра в 15:00</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-note">
+    Макеты приближены к мобильным карточкам ресторанов MirCity: фон затемнён сильнее, а статус/время открытия всегда по центру карточки.
+  </div>
+</body>
+</html>
