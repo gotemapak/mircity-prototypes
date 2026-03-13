@@ -177,19 +177,27 @@
   </div>
   <section style="margin-top: 28px; width: 100%; max-width: 420px;">
     <h2 style="font-size: 15px; font-weight: 600; margin-bottom: 8px; color: #4b5563;">Поп-ап «Ресторан закрыт»</h2>
-    <p style="font-size: 13px; color: #6b7280; margin-bottom: 12px;">Два варианта текста в зависимости от того, знаем ли дату открытия.</p>
+    <p style="font-size: 13px; color: #6b7280; margin-bottom: 12px;">Два варианта текста в стиле системного поп-апа корзины.</p>
 
-    <div style="display: flex; flex-direction: column; gap: 12px;">
-      <div style="border-radius: 18px; background: rgba(15,23,42,0.92); color: #F9FAFB; padding: 16px 16px 12px; box-shadow: 0 18px 45px rgba(0,0,0,0.45);">
-        <div style="font-size: 15px; font-weight: 600; margin-bottom: 6px;">Ресторан закрыт</div>
-        <div style="font-size: 13px; line-height: 1.4; opacity: 0.9; margin-bottom: 10px;">Заказ будет сделан на ближайшее время открытия ресторана.</div>
-        <button style="margin-top: 2px; align-self: flex-end; padding: 7px 16px; border-radius: 999px; border: none; background: #F9FAFB; color: #111827; font-size: 13px; font-weight: 600; box-shadow: 0 4px 10px rgba(0,0,0,0.35); cursor: default;">Хорошо</button>
+    <div style="display: flex; flex-direction: column; gap: 16px;">
+      <!-- Вариант 1: дата открытия известна -->
+      <div style="border-radius: 24px; background: #FFFFFF; padding: 18px 20px 14px; box-shadow: 0 18px 45px rgba(15,23,42,0.45); display: flex; flex-direction: column; align-items: stretch; gap: 10px;">
+        <div style="width: 40px; height: 40px; border-radius: 999px; background: #F1F5F9; display: flex; align-items: center; justify-content: center; margin: 0 auto 4px;">
+          <span style="font-size: 20px;">🍽</span>
+        </div>
+        <div style="font-size: 16px; font-weight: 600; text-align: center; color: #111827;">Ресторан закрыт</div>
+        <div style="font-size: 13px; line-height: 1.5; text-align: center; color: #6b7280;">Заказ будет сделан на ближайшее время открытия ресторана.</div>
+        <button style="margin-top: 8px; width: 100%; padding: 10px 16px; border-radius: 12px; border: none; background: #ff5151; color: #ffffff; font-size: 15px; font-weight: 600;">Хорошо</button>
       </div>
 
-      <div style="border-radius: 18px; background: rgba(15,23,42,0.92); color: #F9FAFB; padding: 16px 16px 12px; box-shadow: 0 18px 45px rgba(0,0,0,0.45);">
-        <div style="font-size: 15px; font-weight: 600; margin-bottom: 6px;">Ресторан закрыт</div>
-        <div style="font-size: 13px; line-height: 1.4; opacity: 0.9; margin-bottom: 10px;">Сейчас ресторан временно закрыт, дата открытия пока неизвестна. Заказ оформить нельзя — выберите другой ресторан.</div>
-        <button style="margin-top: 2px; align-self: flex-end; padding: 7px 16px; border-radius: 999px; border: none; background: #F9FAFB; color: #111827; font-size: 13px; font-weight: 600; box-shadow: 0 4px 10px rgba(0,0,0,0.35); cursor: default;">Хорошо</button>
+      <!-- Вариант 2: дата открытия неизвестна -->
+      <div style="border-radius: 24px; background: #FFFFFF; padding: 18px 20px 14px; box-shadow: 0 18px 45px rgba(15,23,42,0.45); display: flex; flex-direction: column; align-items: stretch; gap: 10px;">
+        <div style="width: 40px; height: 40px; border-radius: 999px; background: #F1F5F9; display: flex; align-items: center; justify-content: center; margin: 0 auto 4px;">
+          <span style="font-size: 20px;">🍽</span>
+        </div>
+        <div style="font-size: 16px; font-weight: 600; text-align: center; color: #111827;">Ресторан закрыт</div>
+        <div style="font-size: 13px; line-height: 1.5; text-align: center; color: #6b7280;">Сейчас ресторан временно закрыт, дата открытия пока неизвестна. Заказ оформить нельзя — выберите другой ресторан.</div>
+        <button style="margin-top: 8px; width: 100%; padding: 10px 16px; border-radius: 12px; border: none; background: #ff5151; color: #ffffff; font-size: 15px; font-weight: 600;">Хорошо</button>
       </div>
     </div>
   </section>
