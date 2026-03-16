@@ -189,26 +189,40 @@
   </div>
   <section style="margin-top: 28px; width: 100%; max-width: 420px;">
     <h2 style="font-size: 15px; font-weight: 600; margin-bottom: 8px; color: #4b5563;">Поп-апы для закрытого ресторана</h2>
-    <p style="font-size: 13px; color: #6b7280; margin-bottom: 12px;">Два варианта текста в стиле системного поп-апа корзины: когда ресторан не принимает заказы и когда заказ можно оформить на ближайшее время открытия.</p>
+    <p style="font-size: 13px; color: #6b7280; margin-bottom: 12px;">Четыре варианта текста в стиле системного поп-апа корзины: три варианта с оформлением заказа на конкретное время и один вариант, когда ресторан не принимает заказы.</p>
 
     <div style="display: flex; flex-direction: column; gap: 16px;">
-      <!-- Вариант 1: дата и время открытия известны, можно оформить заказ на ближайшее время открытия -->
+      <!-- Вариант 1: ресторан закрыт, заказ оформляется на сегодня с 15:00 -->
       <div style="border-radius: 24px; background: #FFFFFF; padding: 18px 20px 14px; box-shadow: 0 18px 45px rgba(15,23,42,0.45); display: flex; flex-direction: column; align-items: stretch; gap: 10px;">
         <div style="width: 40px; height: 40px; border-radius: 999px; background: #F1F5F9; display: flex; align-items: center; justify-content: center; margin: 0 auto 4px;">
           <span style="font-size: 20px;">🍽</span>
         </div>
-        <div style="font-size: 16px; font-weight: 600; text-align: center; color: #111827;">Ресторан закрыт, заказ будет оформлен на ближайшее время</div>
-        <div style="font-size: 13px; line-height: 1.5; text-align: center; color: #6b7280;">
-          Время ближайшего открытия:
-          <br />
-          <strong>сегодня с 15:00</strong><br />
-          завтра с 15:00<br />
-          24.03 с 10:00
-        </div>
+        <div style="font-size: 16px; font-weight: 600; text-align: center; color: #111827;">Ресторан закрыт, заказ будет оформлен на сегодня с 15:00</div>
+        <div style="font-size: 13px; line-height: 1.5; text-align: center; color: #6b7280;">Мы оформим заказ сейчас и передадим его в ресторан сегодня с 15:00.</div>
         <button style="margin-top: 8px; width: 100%; padding: 10px 16px; border-radius: 12px; border: none; background: #fd7d8a; color: #ffffff; font-size: 15px; font-weight: 600;">Хорошо</button>
       </div>
 
-      <!-- Вариант 2: дата и время открытия неизвестны, оформить заказ нельзя -->
+      <!-- Вариант 2: ресторан закрыт, заказ оформляется на завтра с 15:00 -->
+      <div style="border-radius: 24px; background: #FFFFFF; padding: 18px 20px 14px; box-shadow: 0 18px 45px rgba(15,23,42,0.45); display: flex; flex-direction: column; align-items: stretch; gap: 10px;">
+        <div style="width: 40px; height: 40px; border-radius: 999px; background: #F1F5F9; display: flex; align-items: center; justify-content: center; margin: 0 auto 4px;">
+          <span style="font-size: 20px;">🍽</span>
+        </div>
+        <div style="font-size: 16px; font-weight: 600; text-align: center; color: #111827;">Ресторан закрыт, заказ будет оформлен на завтра с 15:00</div>
+        <div style="font-size: 13px; line-height: 1.5; text-align: center; color: #6b7280;">Мы оформим заказ сейчас и передадим его в ресторан завтра с 15:00.</div>
+        <button style="margin-top: 8px; width: 100%; padding: 10px 16px; border-radius: 12px; border: none; background: #fd7d8a; color: #ffffff; font-size: 15px; font-weight: 600;">Хорошо</button>
+      </div>
+
+      <!-- Вариант 3: ресторан закрыт, заказ оформляется на конкретную дату 24.03 с 10:00 -->
+      <div style="border-radius: 24px; background: #FFFFFF; padding: 18px 20px 14px; box-shadow: 0 18px 45px rgba(15,23,42,0.45); display: flex; flex-direction: column; align-items: stretch; gap: 10px;">
+        <div style="width: 40px; height: 40px; border-radius: 999px; background: #F1F5F9; display: flex; align-items: center; justify-content: center; margin: 0 auto 4px;">
+          <span style="font-size: 20px;">🍽</span>
+        </div>
+        <div style="font-size: 16px; font-weight: 600; text-align: center; color: #111827;">Ресторан закрыт, заказ будет оформлен на 24.03 с 10:00</div>
+        <div style="font-size: 13px; line-height: 1.5; text-align: center; color: #6b7280;">Мы оформим заказ сейчас и передадим его в ресторан 24.03 с 10:00.</div>
+        <button style="margin-top: 8px; width: 100%; padding: 10px 16px; border-radius: 12px; border: none; background: #fd7d8a; color: #ffffff; font-size: 15px; font-weight: 600;">Хорошо</button>
+      </div>
+
+      <!-- Вариант 4: ресторан закрыт и заказы не принимает -->
       <div style="border-radius: 24px; background: #FFFFFF; padding: 18px 20px 14px; box-shadow: 0 18px 45px rgba(15,23,42,0.45); display: flex; flex-direction: column; align-items: stretch; gap: 10px;">
         <div style="width: 40px; height: 40px; border-radius: 999px; background: #F1F5F9; display: flex; align-items: center; justify-content: center; margin: 0 auto 4px;">
           <span style="font-size: 20px;">🍽</span>
