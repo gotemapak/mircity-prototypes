@@ -131,72 +131,72 @@
 </head>
 <body>
   <h1>MIR-483 · Закрытый ресторан</h1>
-  <div class="subtitle">Три состояния карточки ресторана в мобильной выдаче MirCity</div>
+  <div class="subtitle">Три состояния карточки закрытого ресторана в мобильной выдаче MirCity</div>
 
   <div class="cards">
     <div>
-      <div class="label">1. Ресторан закрыт (без времени)</div>
+      <div class="label">1. Ресторан закрыт (нет времени открытия)</div>
       <div class="card">
         <div class="favourite">
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <path d="M12 21s-5.6-3.3-8.2-6C1.4 12.4 2 8.5 4.6 6.6 6.5 5.2 9 5.5 10.7 7.2L12 8.5l1.3-1.3c1.7-1.7 4.2-2 6.1-.6 2.6 1.9 3.2 5.8.8 8.4-2.6 2.7-8.2 6-8.2 6z" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </div>
-        <div class="pill"><span>Ресторан временно закрыт</span></div>
+        <div class="pill"><span>Ресторан закрыт · сейчас не принимает заказы</span></div>
       </div>
     </div>
 
     <div>
-      <div class="label">2. Откроется сегодня в 15:00</div>
+      <div class="label">2. Принимает заказы сегодня с 15:00</div>
       <div class="card">
         <div class="favourite">
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <path d="M12 21s-5.6-3.3-8.2-6C1.4 12.4 2 8.5 4.6 6.6 6.5 5.2 9 5.5 10.7 7.2L12 8.5l1.3-1.3c1.7-1.7 4.2-2 6.1-.6 2.6 1.9 3.2 5.8.8 8.4-2.6 2.7-8.2 6-8.2 6z" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </div>
-        <div class="pill"><span>Откроется сегодня в 15:00</span></div>
-        <div class="badge-bottom-right">Сегодня в 15:00</div>
+        <div class="pill"><span>Принимает заказы сегодня с 15:00</span></div>
+        <div class="badge-bottom-right">Сегодня с 15:00</div>
       </div>
     </div>
 
     <div>
-      <div class="label">3. Откроется с датой/завтра</div>
+      <div class="label">3. Принимает заказы с датой/завтра</div>
       <div class="card">
         <div class="favourite">
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <path d="M12 21s-5.6-3.3-8.2-6C1.4 12.4 2 8.5 4.6 6.6 6.5 5.2 9 5.5 10.7 7.2L12 8.5l1.3-1.3c1.7-1.7 4.2-2 6.1-.6 2.6 1.9 3.2 5.8.8 8.4-2.6 2.7-8.2 6-8.2 6z" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </div>
-        <div class="pill"><span>Откроется 24.03 в 10:00</span></div>
+        <div class="pill"><span>Принимает заказы 24.03 с 10:00</span></div>
       </div>
     </div>
   </div>
 
   <div class="footer-note">
-    Макеты приближены к мобильным карточкам ресторанов MirCity: фон затемнён сильнее, а статус/время открытия всегда по центру карточки.
+    Макеты приближены к мобильным карточкам ресторанов MirCity: фон затемнён сильнее, а статус/время принятия заказов всегда по центру карточки.
   </div>
   <section style="margin-top: 28px; width: 100%; max-width: 420px;">
-    <h2 style="font-size: 15px; font-weight: 600; margin-bottom: 8px; color: #4b5563;">Поп-ап «Ресторан закрыт»</h2>
-    <p style="font-size: 13px; color: #6b7280; margin-bottom: 12px;">Два варианта текста в стиле системного поп-апа корзины.</p>
+    <h2 style="font-size: 15px; font-weight: 600; margin-bottom: 8px; color: #4b5563;">Поп-апы для закрытого ресторана</h2>
+    <p style="font-size: 13px; color: #6b7280; margin-bottom: 12px;">Два варианта текста в стиле системного поп-апа корзины: когда ресторан не принимает заказы и когда заказ можно оформить на ближайшее время открытия.</p>
 
     <div style="display: flex; flex-direction: column; gap: 16px;">
-      <!-- Вариант 1: дата открытия известна -->
+      <!-- Вариант 1: дата и время открытия известны, можно оформить заказ на ближайшее время открытия -->
       <div style="border-radius: 24px; background: #FFFFFF; padding: 18px 20px 14px; box-shadow: 0 18px 45px rgba(15,23,42,0.45); display: flex; flex-direction: column; align-items: stretch; gap: 10px;">
         <div style="width: 40px; height: 40px; border-radius: 999px; background: #F1F5F9; display: flex; align-items: center; justify-content: center; margin: 0 auto 4px;">
           <span style="font-size: 20px;">🍽</span>
         </div>
-        <div style="font-size: 16px; font-weight: 600; text-align: center; color: #111827;">Ресторан закрыт</div>
-        <div style="font-size: 13px; line-height: 1.5; text-align: center; color: #6b7280;">Заказ будет сделан на ближайшее время открытия ресторана.</div>
+        <div style="font-size: 16px; font-weight: 600; text-align: center; color: #111827;">Ресторан закрыт, но можно оформить заказ</div>
+        <div style="font-size: 13px; line-height: 1.5; text-align: center; color: #6b7280;">Мы оформим заказ сейчас и передадим его в ресторан в ближайшее время открытия: сегодня с 15:00.</div>
         <button style="margin-top: 8px; width: 100%; padding: 10px 16px; border-radius: 12px; border: none; background: #fd7d8a; color: #ffffff; font-size: 15px; font-weight: 600;">Хорошо</button>
       </div>
 
-      <!-- Вариант 2: дата открытия неизвестна -->
+      <!-- Вариант 2: дата и время открытия неизвестны, оформить заказ нельзя -->
       <div style="border-radius: 24px; background: #FFFFFF; padding: 18px 20px 14px; box-shadow: 0 18px 45px rgba(15,23,42,0.45); display: flex; flex-direction: column; align-items: stretch; gap: 10px;">
         <div style="width: 40px; height: 40px; border-radius: 999px; background: #F1F5F9; display: flex; align-items: center; justify-content: center; margin: 0 auto 4px;">
           <span style="font-size: 20px;">🍽</span>
         </div>
-        <div style="font-size: 16px; font-weight: 600; text-align: center; color: #111827;">Ресторан закрыт</div>
-        <div style="font-size: 13px; line-height: 1.5; text-align: center; color: #6b7280;">Ресторан временно закрыт и не принимает заказы. Выберите, пожалуйста, другой ресторан.</div>
+        <div style="font-size: 16px; font-weight: 600; text-align: center; color: #111827;">Ресторан закрыт и не принимает заказы</div>
+        <div style="font-size: 13px; line-height: 1.5; text-align: center; color: #6b7280;">Сейчас этот ресторан не принимает заказы. Выберите, пожалуйста, другой ресторан или попробуйте позже.</div>
         <button style="margin-top: 8px; width: 100%; padding: 10px 16px; border-radius: 12px; border: none; background: #fd7d8a; color: #ffffff; font-size: 15px; font-weight: 600;">Хорошо</button>
       </div>
     </div>
