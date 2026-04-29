@@ -427,6 +427,101 @@
     }
     .promo-expires-small { font-size: 12px; color: #E05A3A; margin-bottom: 16px; }
 
+    /* ══ Stories Overlay (Компонент 9 — онбординг) ══ */
+    .stories-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(175deg, #0b1d35 0%, #1F3A60 55%, #2a5080 100%);
+      z-index: 200; display: flex; flex-direction: column;
+    }
+    .stories-overlay.hidden { display: none; }
+
+    .stories-header {
+      display: flex; align-items: center; gap: 8px;
+      padding: 52px 14px 10px;
+    }
+    .stories-progress { flex: 1; display: flex; gap: 4px; }
+    .s-bar { flex: 1; height: 3px; background: rgba(255,255,255,0.25); border-radius: 2px; overflow: hidden; }
+    .s-bar-fill { height: 100%; width: 0; background: #fff; border-radius: 2px; }
+    .s-bar-fill.s-done { width: 100%; }
+    .s-bar-fill.s-active { animation: sBarFill 5s linear forwards; }
+    @keyframes sBarFill { from { width: 0; } to { width: 100%; } }
+    .stories-skip-btn {
+      flex-shrink: 0; background: rgba(255,255,255,0.14); border: none; border-radius: 20px;
+      padding: 5px 12px; font-size: 12px; font-weight: 600; color: #fff;
+      cursor: pointer; font-family: var(--font-family); position: relative; z-index: 5;
+    }
+
+    .stories-art {
+      display: flex; align-items: center; justify-content: center;
+      padding: 20px 0 10px; flex-shrink: 0; position: relative; z-index: 2;
+    }
+    .s-card-wrap { position: relative; }
+    .s-card {
+      width: 192px; height: 118px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.22), rgba(255,126,138,0.14));
+      border: 1.5px solid rgba(255,255,255,0.32); border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.45); position: relative; overflow: hidden;
+    }
+    .s-card::after {
+      content: ''; position: absolute; top: -24px; right: -24px;
+      width: 80px; height: 80px; background: rgba(255,255,255,0.06); border-radius: 50%;
+    }
+    .s-card-chip {
+      position: absolute; top: 16px; left: 16px; width: 28px; height: 20px;
+      background: linear-gradient(135deg, rgba(255,215,70,0.9), rgba(200,165,30,0.7)); border-radius: 4px;
+    }
+    .s-card-label {
+      position: absolute; bottom: 12px; left: 16px;
+      font-size: 8px; font-weight: 800; letter-spacing: 3px;
+      color: rgba(255,255,255,0.55); font-family: var(--font-family);
+    }
+    .s-card-dots { position: absolute; bottom: 10px; right: 14px; display: flex; }
+    .s-card-dot { width: 18px; height: 18px; border-radius: 50%; }
+    .s-card-dot:first-child { background: rgba(255,110,110,0.85); margin-right: -6px; z-index: 1; position: relative; }
+    .s-card-dot:last-child { background: rgba(255,165,60,0.85); }
+    .s-spark {
+      position: absolute; color: rgba(255,255,255,0.8);
+      animation: sSpark 2.8s ease-in-out infinite;
+    }
+    .s-spark-a { top: -12px; right: 14px; font-size: 20px; animation-delay: 0s; }
+    .s-spark-b { top: 14px; right: -18px; font-size: 13px; animation-delay: 0.9s; }
+    .s-spark-c { bottom: -8px; left: -18px; font-size: 15px; animation-delay: 1.6s; }
+    @keyframes sSpark {
+      0%,100% { transform: translateY(0) scale(1); opacity: 0.6; }
+      50% { transform: translateY(-7px) scale(1.2); opacity: 1; }
+    }
+
+    .stories-body {
+      flex: 1; padding: 10px 18px 20px;
+      display: flex; flex-direction: column; position: relative; z-index: 2;
+    }
+    .stories-heading { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 12px; line-height: 1.25; }
+    .s-step {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 11px 13px; border-radius: 14px; margin-bottom: 8px;
+      transition: all 0.3s ease; opacity: 0.2; border: 1px solid transparent;
+    }
+    .s-step.s-step-active { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.18); opacity: 1; }
+    .s-step.s-step-done { opacity: 0.48; }
+    .s-step-ico { font-size: 26px; width: 36px; flex-shrink: 0; display: flex; align-items: center; }
+    .s-step-name { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 3px; line-height: 1.2; }
+    .s-step-desc { font-size: 13px; color: rgba(255,255,255,0.58); line-height: 1.4; }
+    .stories-cta {
+      margin-top: auto; padding-top: 14px;
+      width: 100%; height: 49px; background: #fff; border: none; border-radius: 24px;
+      font-size: 15px; font-weight: 700; color: #1F3A60;
+      cursor: pointer; font-family: var(--font-family);
+      opacity: 0; transform: translateY(10px);
+      transition: opacity 0.3s, transform 0.3s; pointer-events: none;
+    }
+    .stories-cta.s-cta-visible { opacity: 1; transform: translateY(0); pointer-events: all; }
+
+    .s-tap-left, .s-tap-right {
+      position: absolute; top: 90px; bottom: 0; width: 45%; z-index: 4; cursor: pointer;
+    }
+    .s-tap-left { left: 0; }
+    .s-tap-right { right: 0; }
+
     /* ── Demo controls ── */
     .demo {
       width: 375px;
@@ -448,6 +543,63 @@
 
 <!-- ── PHONE ── -->
 <div class="phone" id="phone">
+
+  <!-- ══ STORIES OVERLAY — компонент 9: онбординг нового функционала ══ -->
+  <div class="stories-overlay" id="storiesOverlay">
+    <div class="stories-header">
+      <div class="stories-progress">
+        <div class="s-bar"><div class="s-bar-fill" id="sbar0"></div></div>
+        <div class="s-bar"><div class="s-bar-fill" id="sbar1"></div></div>
+        <div class="s-bar"><div class="s-bar-fill" id="sbar2"></div></div>
+      </div>
+      <button class="stories-skip-btn" onclick="closeStories()">Пропустить</button>
+    </div>
+
+    <div class="stories-art">
+      <div class="s-card-wrap">
+        <div class="s-card">
+          <div class="s-card-chip"></div>
+          <div class="s-card-label">MIR CITY</div>
+          <div class="s-card-dots">
+            <div class="s-card-dot"></div>
+            <div class="s-card-dot"></div>
+          </div>
+        </div>
+        <span class="s-spark s-spark-a">✦</span>
+        <span class="s-spark s-spark-b">✦</span>
+        <span class="s-spark s-spark-c">✦</span>
+      </div>
+    </div>
+
+    <div class="stories-body">
+      <div class="stories-heading">Карты стали ещё полезнее</div>
+      <div class="s-step s-step-active" id="ss0">
+        <div class="s-step-ico">🗺️</div>
+        <div>
+          <div class="s-step-name">Открывайте карту</div>
+          <div class="s-step-desc">Сканируйте QR у партнёров или оплачивайте онлайн-заказы</div>
+        </div>
+      </div>
+      <div class="s-step" id="ss1">
+        <div class="s-step-ico">🔥</div>
+        <div>
+          <div class="s-step-name">Копите стрики</div>
+          <div class="s-step-desc">Каждое использование — +1 стрик. Главное — не пропускать 3 дня</div>
+        </div>
+      </div>
+      <div class="s-step" id="ss2">
+        <div class="s-step-ico">🎁</div>
+        <div>
+          <div class="s-step-name">Получайте промокоды</div>
+          <div class="s-step-desc">5 стриков = промокод −30% в ресторанах-партнёрах MIR City</div>
+        </div>
+      </div>
+      <button class="stories-cta" id="storiesCta" onclick="closeStories()">Начать зарабатывать →</button>
+    </div>
+
+    <div class="s-tap-left" onclick="prevStory()"></div>
+    <div class="s-tap-right" onclick="nextStory()"></div>
+  </div>
 
   <!-- Status bar -->
   <div class="status-bar">
@@ -683,6 +835,7 @@
   <button onclick="resetStreak()">Сброс</button>
   <button onclick="showConditions()">Условия</button>
   <button onclick="givePromo()">Промокод (5/5)</button>
+  <button onclick="showStories()">Сторис ↩</button>
 </div>
 
 <script>
@@ -849,6 +1002,49 @@
   }
 
   // ── Helpers ──
+  // ── Stories — Component 9 ──
+  let storyIdx = 0;
+  let storyTimer = null;
+
+  function renderStory(idx) {
+    [0, 1, 2].forEach(i => {
+      const bar = document.getElementById('sbar' + i);
+      bar.classList.remove('s-done', 's-active');
+      if (i < idx) {
+        bar.classList.add('s-done');
+      } else if (i === idx) {
+        void bar.offsetWidth; // restart animation
+        bar.classList.add('s-active');
+      }
+      const step = document.getElementById('ss' + i);
+      step.classList.remove('s-step-active', 's-step-done');
+      if (i === idx) step.classList.add('s-step-active');
+      else if (i < idx) step.classList.add('s-step-done');
+    });
+    document.getElementById('storiesCta').classList.toggle('s-cta-visible', idx === 2);
+    storyIdx = idx;
+    clearTimeout(storyTimer);
+    storyTimer = setTimeout(nextStory, 5000);
+  }
+
+  function nextStory() {
+    if (storyIdx < 2) renderStory(storyIdx + 1);
+    else closeStories();
+  }
+  function prevStory() {
+    if (storyIdx > 0) renderStory(storyIdx - 1);
+  }
+  function closeStories() {
+    clearTimeout(storyTimer);
+    document.getElementById('storiesOverlay').classList.add('hidden');
+  }
+  function showStories() {
+    document.getElementById('storiesOverlay').classList.remove('hidden');
+    renderStory(0);
+  }
+
+  renderStory(0);
+
   function pluralDays(n) {
     if (n % 10 === 1 && n % 100 !== 11) return 'день';
     if ([2,3,4].includes(n%10) && ![12,13,14].includes(n%100)) return 'дня';
