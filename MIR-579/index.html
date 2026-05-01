@@ -584,14 +584,14 @@
         <div class="s-step-ico">🔥</div>
         <div>
           <div class="s-step-name">Копите стрики</div>
-          <div class="s-step-desc">Каждое использование — +1 стрик. Главное — не пропускать 3 дня</div>
+          <div class="s-step-desc">Каждое использование — +1 стрик. Главное — не пропускать 5 дней</div>
         </div>
       </div>
       <div class="s-step" id="ss2">
         <div class="s-step-ico">🎁</div>
         <div>
           <div class="s-step-name">Получайте промокоды</div>
-          <div class="s-step-desc">5 стриков = промокод −30% в ресторанах-партнёрах MIR City</div>
+          <div class="s-step-desc">3 стрика = промокод −30% в ресторанах-партнёрах MIR City</div>
         </div>
       </div>
       <button class="stories-cta" id="storiesCta" onclick="closeStories()">Начать зарабатывать →</button>
@@ -640,15 +640,11 @@
         <div class="checkpoint-spacer"></div>
         <div class="checkpoint" id="cp1" onclick="showConditions()">2</div>
         <div class="checkpoint-spacer"></div>
-        <div class="checkpoint" id="cp2" onclick="showConditions()">3</div>
-        <div class="checkpoint-spacer"></div>
-        <div class="checkpoint" id="cp3" onclick="showConditions()">4</div>
-        <div class="checkpoint-spacer"></div>
-        <div class="checkpoint prize" id="cp4" onclick="showConditions()">🎁</div>
+        <div class="checkpoint prize" id="cp2" onclick="showConditions()">🎁</div>
       </div>
 
       <div class="streak-footer">
-        <span class="streak-conditions">За каждые 5 сканирований дарим промокод. Сканируйте карту каждые 3 дня, чтобы не потерять стрик.</span>
+        <span class="streak-conditions">За каждые 3 сканирования дарим промокод. Сканируйте карту каждые 5 дней, чтобы не потерять стрик.</span>
         <span class="streak-details-link" onclick="showConditions()">Условия акции</span>
       </div>
     </div>
@@ -743,7 +739,7 @@
       <div class="streak-count-box" id="streakCountBox">1</div>
       <h2 id="celebTitle">Молодец!</h2>
       <p id="celebSub" style="font-size:15px;color:var(--color-text-primary);margin-bottom:4px;">1 сканирование сделано! Так держать!</p>
-      <p id="celebRemain" style="font-size:13px;color:var(--color-text-secondary);margin-bottom:0;">Ещё 4 до промокода</p>
+      <p id="celebRemain" style="font-size:13px;color:var(--color-text-secondary);margin-bottom:0;">Ещё 2 до промокода</p>
       <div class="popup-timer-row">Следующее засчитается через <span id="popupTimer">00:00</span></div>
       <button class="popup-btn" onclick="closePopup('popupProgress')">Понятно</button>
     </div>
@@ -754,7 +750,7 @@
     <div class="popup">
       <div class="popup-icon">🎁</div>
       <h2>Сканируйте карту — получайте бонусы</h2>
-      <p>За каждые <strong>5 сканирований</strong> дарим промокод на заказ в ресторанах MIR City.<br><br>Сканируйте карту раз в день и зарабатывайте стрики.</p>
+      <p>За каждые <strong>3 сканирования</strong> дарим промокод на заказ в ресторанах MIR City.<br><br>Сканируйте карту раз в день и зарабатывайте стрики. Стрик не сгорит, если не пропустить 5 дней подряд.</p>
       <button class="popup-btn" onclick="closePopup('popupConditions')">Понятно</button>
       <span class="popup-link" onclick="closePopup('popupConditions')">Подробные условия акции</span>
     </div>
@@ -765,7 +761,7 @@
     <div class="popup">
       <div class="popup-icon">🎉</div>
       <h2>Вы получили промокод!</h2>
-      <p>5 из 5 сканирований — поздравляем!</p>
+      <p>3 из 3 сканирований — поздравляем!</p>
       <div class="promo-card-block">
         <div class="promo-code-row">
           <div class="promo-code-big" id="promoCodeDisplay">MIR30XY</div>
@@ -834,7 +830,7 @@
   <button onclick="simulateScan()">+1 скан</button>
   <button onclick="resetStreak()">Сброс</button>
   <button onclick="showConditions()">Условия</button>
-  <button onclick="givePromo()">Промокод (5/5)</button>
+  <button onclick="givePromo()">Промокод (3/3)</button>
   <button onclick="showStories()">Сторис ↩</button>
 </div>
 
@@ -912,14 +908,14 @@
     document.getElementById('streakTimer').style.display = 'block';
     updateClock();
 
-    if (scanCount >= 5) {
+    if (scanCount >= 3) {
       scanCount = 0;
       givePromo();
     } else {
       updateStreak();
       document.getElementById('streakCountBox').textContent = totalScans;
       document.getElementById('celebSub').textContent = `${totalScans} ${pluralScans(totalScans)} сделано! Так держать!`;
-      document.getElementById('celebRemain').textContent = `Ещё ${5 - scanCount} ${pluralScans(5 - scanCount)} до промокода`;
+      document.getElementById('celebRemain').textContent = `Ещё ${3 - scanCount} ${pluralScans(3 - scanCount)} до промокода`;
       // явно ставим таймер перед открытием
       const _pad = n => String(n).padStart(2,'0');
       const _diff = Math.max(0, nextScanAt - Date.now());
@@ -942,13 +938,13 @@
   // ── Update streak UI ──
   function updateStreak() {
     document.getElementById('streakBadge').textContent = `🔥 ${totalScans} ${pluralDays(totalScans)}`;
-    [0,1,2,3,4].forEach(i => {
+    [0,1,2].forEach(i => {
       const el = document.getElementById('cp' + i);
       el.classList.remove('done','current');
       if (i < scanCount) el.classList.add('done');
-      else if (i === scanCount && scanCount < 5) el.classList.add('current');
+      else if (i === scanCount && scanCount < 3) el.classList.add('current');
     });
-    document.getElementById('lineProgress').style.width = Math.min((scanCount / 4) * 100, 100) + '%';
+    document.getElementById('lineProgress').style.width = Math.min((scanCount / 2) * 100, 100) + '%';
   }
 
   // ── Reset ──
